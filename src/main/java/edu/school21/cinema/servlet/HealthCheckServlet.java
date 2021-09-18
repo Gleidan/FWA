@@ -1,4 +1,4 @@
-package edu.school21.cinema;
+package edu.school21.cinema.servlet;
 
 import edu.school21.cinema.model.User;
 import edu.school21.cinema.repository.UserRepository;
@@ -18,7 +18,6 @@ import java.io.IOException;
 
 @WebServlet("/healthCheck")
 public class HealthCheckServlet extends HttpServlet {
-
     private UserService userService;
 
     @Override

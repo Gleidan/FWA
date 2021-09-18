@@ -21,4 +21,10 @@ public class UserService {
             System.out.println("email exists");
         }
     }
+
+    public User getUserByEmail(String email) {
+        return userRepository.getUserByEmail(email);
+    }
+
+
 }
