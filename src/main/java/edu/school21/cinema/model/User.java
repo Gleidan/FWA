@@ -3,13 +3,13 @@ package edu.school21.cinema.model;
 import java.util.Objects;
 
 public class User {
-    private Long user_id;
+    private Integer user_id;
     private String email;
     private String password;
     private String firstName;
     private String lastName;
 
-    public User(Long user_id, String email, String password, String firstName, String lastName) {
+    public User(Integer user_id, String email, String password, String firstName, String lastName) {
         this.user_id = user_id;
         this.email = email;
         this.password = password;
@@ -17,11 +17,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public Long getUser_id() {
+    public Integer getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(Long user_id) {
+    public void setUser_id(Integer user_id) {
         this.user_id = user_id;
     }
 
