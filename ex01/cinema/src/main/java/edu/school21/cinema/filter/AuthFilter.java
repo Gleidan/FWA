@@ -1,4 +1,4 @@
-package filter;
+package edu.school21.cinema.filter;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
