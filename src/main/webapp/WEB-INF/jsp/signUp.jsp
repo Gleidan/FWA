@@ -13,18 +13,18 @@
 </head>
 <body>
     <h1>Регистрация</h1>
-    <form action="${pageContext.request.contextPath}/signUp" method="post">
+    <form action="/signUp" method="post">
         <label for="firstName">Имя :
-            <input type="text" name="firstName" id="firstName" value="${firstName}">
+            <input type="text" name="firstName" id="firstName">
         </label>
         <label for="lastName">Фамилия:
-            <input type="text" name="lastName" id="lastName" value="${lastName}">
+            <input type="text" name="lastName" id="lastName">
         </label>
         <label for="email">Email:
-            <input type="text" name="email" id="email" value="${email}">
+            <input type="text" name="email" id="email">
         </label>
         <label for="password">Password:
-            <input type="text" name="password" id="password" value="${password}">
+            <input type="text" name="password" id="password">
         </label>
             <input type="submit" name="signup" value="Sign Up">
     </form>

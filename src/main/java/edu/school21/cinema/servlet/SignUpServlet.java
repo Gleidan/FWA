@@ -19,8 +19,15 @@ public class SignUpServlet extends HttpServlet {
     private UserService userService;
 
     @Override
+    public void init(ServletConfig config) throws ServletException {
+        ServletContext context = config.getServletContext();
+        ApplicationContext con = (ApplicationContext) context.getAttribute("springContext");
+        userService = con.getBean(UserService.class);
+    }
+
+    @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher view = req.getRequestDispatcher("jsp/signUp.jsp");
+        RequestDispatcher view = req.getRequestDispatcher("WEB-INF/jsp/signUp.jsp");
         view.forward(req, resp);
     }
 

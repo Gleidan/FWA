@@ -13,12 +13,12 @@
 </head>
 <body>
     <h1>Аутентификация</h1>
-    <form action="${pageContext.request.contextPath}/signIn" method="post">
+    <form action="/signIn" method="post">
         <label for="email">Email:
-            <input type="text" name="email" id="email" value="${email}">
+            <input type="text" name="email" id="email">
         </label>
         <label for="password">Password:
-            <input type="text" name="password" id="password" value="${password}">
+            <input type="text" name="password" id="password">
         </label>
         <input type="submit" name="signin" value="Sign In">
     </form>

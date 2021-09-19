@@ -18,7 +18,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @Configuration
-@PropertySource("WEB-INF/application.properties")
+@PropertySource("../application.properties")
 public class SpringConfiguration {
 
     @Value("${datasource.driver-class-name}")

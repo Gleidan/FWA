@@ -22,9 +22,12 @@ public class UserService {
         }
     }
 
-    public User getUserByEmail(String email) {
-        return userRepository.getUserByEmail(email);
+    public User getUserByEmail(String email, String password) {
+        User user = userRepository.getUserByEmail(email);
+        if (user != null && passwordEncoder.matches(password, user.getPassword())) {
+            return user;
+        } else {
+            return null;
+        }
     }
-
-
 }
