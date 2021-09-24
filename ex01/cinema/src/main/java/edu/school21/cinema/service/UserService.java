@@ -1,5 +1,8 @@
 package edu.school21.cinema.service;
 
+import edu.school21.cinema.exception.IncorrectPasswordException;
+import edu.school21.cinema.exception.UserAlreadyExistsException;
+import edu.school21.cinema.exception.UserNotFoundException;
 import edu.school21.cinema.model.User;
 import edu.school21.cinema.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -13,21 +16,23 @@ public class UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public void save(User user) {
+    public int save(User user) throws UserAlreadyExistsException {
         if (userRepository.getUserByEmail(user.getEmail()) == null) {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
-            userRepository.save(user);
+            return userRepository.save(user);
         } else {
-            System.out.println("email exists");
+            throw new UserAlreadyExistsException("Email already exists");
         }
     }
 
-    public User getUserByEmail(String email, String password) {
+    public User getUserByEmail(String email, String password) throws UserNotFoundException, IncorrectPasswordException {
         User user = userRepository.getUserByEmail(email);
-        if (user != null && passwordEncoder.matches(password, user.getPassword())) {
-            return user;
+        if (user == null) {
+            throw new UserNotFoundException("User not found");
+        } else if (!passwordEncoder.matches(password, user.getPassword())) {
+            throw new IncorrectPasswordException("Incorrect password");
         } else {
-            return null;
+            return user;
         }
     }
 }

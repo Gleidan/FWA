@@ -12,15 +12,14 @@
     <title>Аутентификация</title>
 </head>
 <body>
+<% if (request.getAttribute("error") != null) {%> <%= request.getAttribute("error")%><%}%>
     <h1>Аутентификация</h1>
-    <form action="/signIn" method="post">
-        <label for="email">Email:
-            <input type="text" name="email" id="email">
-        </label>
-        <label for="password">Password:
-            <input type="text" name="password" id="password">
-        </label>
-        <input type="submit" name="signin" value="Sign In">
+    <form action="/signIn" method="POST">
+        <label>Email: </label>
+        <input type="email" placeholder="Enter your email" name="email" required>
+        <label>Password: </label>
+        <input type="password" name="password" placeholder="Enter your password" required>
+        <button type="submit">signIn</button>
     </form>
 </body>
 </html>

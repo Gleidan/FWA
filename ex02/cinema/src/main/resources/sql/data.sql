@@ -1,0 +1,1 @@
+INSERT INTO cinema_users VALUES (default, 'admin@admin.ru', 'admin', 'admin', 'admin');

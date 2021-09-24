@@ -1,8 +1,12 @@
 package edu.school21.cinema.config;
 
+import edu.school21.cinema.model.AuthenticationData;
 import edu.school21.cinema.model.User;
+import edu.school21.cinema.repository.AuthenticationRepository;
 import edu.school21.cinema.repository.UserRepository;
-import edu.school21.cinema.repository.UserRepositoryImpl;
+import edu.school21.cinema.repository.impl.AuthenticationRepositoryImpl;
+import edu.school21.cinema.repository.impl.UserRepositoryImpl;
+import edu.school21.cinema.service.AuthenticationService;
 import edu.school21.cinema.service.UserService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -16,6 +20,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Configuration
 @PropertySource("../application.properties")
@@ -69,5 +75,28 @@ public class SpringConfiguration {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public AuthenticationRepository authenticationRepository(DataSource dataSource, RowMapper<AuthenticationData> dataRowMapper) {
+        return new AuthenticationRepositoryImpl(dataSource, dataRowMapper);
+    }
+
+    @Bean
+    public RowMapper<AuthenticationData> dataRowMapper() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        return new RowMapper<AuthenticationData>() {
+            @Override
+            public AuthenticationData mapRow(ResultSet resultSet, int i) throws SQLException {
+                String ip = resultSet.getString("ip");
+                LocalDateTime date = LocalDateTime.parse(formatter.format(resultSet.getTimestamp("date").toLocalDateTime()), formatter);
+                return new AuthenticationData(ip, date);
+            }
+        };
+    }
+
+    @Bean
+    public AuthenticationService authenticationService(AuthenticationRepository authenticationRepository) {
+        return new AuthenticationService(authenticationRepository);
     }
 }

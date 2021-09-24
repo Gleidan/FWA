@@ -1,4 +1,4 @@
-package edu.school21.cinema.repository;
+package edu.school21.cinema.repository.impl;
 
 public enum UserSQLStatement {
     INSERT("INSERT INTO cinema_users (email, password, first_name, last_name) VALUES (?, ?, ?, ?)"),

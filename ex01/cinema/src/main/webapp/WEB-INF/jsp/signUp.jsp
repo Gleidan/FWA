@@ -12,21 +12,18 @@
     <title>Регистрация</title>
 </head>
 <body>
+<% if (request.getAttribute("error") != null) {%> <%= request.getAttribute("error")%><%}%>
     <h1>Регистрация</h1>
-    <form action="/signUp" method="post">
-        <label for="firstName">Имя :
-            <input type="text" name="firstName" id="firstName">
-        </label>
-        <label for="lastName">Фамилия:
-            <input type="text" name="lastName" id="lastName">
-        </label>
-        <label for="email">Email:
-            <input type="text" name="email" id="email">
-        </label>
-        <label for="password">Password:
-            <input type="text" name="password" id="password">
-        </label>
-            <input type="submit" name="signup" value="Sign Up">
+    <form action="/signUp" method="POST">
+        <label>FirstName: </label>
+        <input type="text" placeholder="Enter user first name" name="firstName" required>
+        <label>LastName: </label>
+        <input type="text" placeholder="Enter user last name" name="lastName" required>
+        <label>Email: </label>
+        <input type="email" placeholder="Enter user email" name="email" required>
+        <label>Password: </label>
+        <input type="password" placeholder="Enter password" name="password" required>
+        <button type="submit">signUp</button>
     </form>
 </body>
 </html>
