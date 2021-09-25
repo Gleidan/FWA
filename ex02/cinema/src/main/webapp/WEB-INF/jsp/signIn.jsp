@@ -6,6 +6,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<style>
+    <%@ include file="/css/style.css" %>
+</style>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -13,13 +16,15 @@
 </head>
 <body>
 <% if (request.getAttribute("error") != null) {%> <%= request.getAttribute("error")%><%}%>
+<div class="form-style-6">
     <h1>Аутентификация</h1>
-    <form action="/signIn" method="POST">
+    <form action="${pageContext.request.contextPath}/signIn" method="POST">
         <label>Email: </label>
         <input type="email" placeholder="Enter your email" name="email" required>
         <label>Password: </label>
         <input type="password" name="password" placeholder="Enter your password" required>
         <button type="submit">signIn</button>
     </form>
+</div>
 </body>
 </html>
