@@ -51,7 +51,7 @@ public class SignUpServlet extends HttpServlet {
             authenticationService.save(req.getRemoteAddr(), user.getUser_id());
             user.setAuthList(authenticationService.getAuthenticationDataByUserId(user.getUser_id()));
             session.setAttribute("user", user);
-            resp.sendRedirect("/profile");
+            resp.sendRedirect("/FWA/profile");
         } catch (Exception e) {
             RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/signUp.jsp");
             req.setAttribute("error", e.getMessage());

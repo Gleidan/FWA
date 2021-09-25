@@ -50,7 +50,7 @@ public class SignUpServlet extends HttpServlet {
             HttpSession session = req.getSession();
             authenticationService.save(req.getRemoteAddr(), id);
             session.setAttribute("user", user);
-            resp.sendRedirect("/profile");
+            resp.sendRedirect("/FWA/profile");
         } catch (Exception e) {
             RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/signUp.jsp");
             req.setAttribute("error", e.getMessage());

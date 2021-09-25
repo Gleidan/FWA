@@ -40,7 +40,7 @@ public class SignInServlet extends HttpServlet {
             User user = userService.getUserByEmail(email, password);
             HttpSession session = req.getSession();
             session.setAttribute("user", user);
-            resp.sendRedirect("/profile");
+            resp.sendRedirect("/FWA/profile");
         } catch (Exception e) {
             RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/signIn.jsp");
             req.setAttribute("error", e.getMessage());

@@ -9,15 +9,6 @@
     <title>Профиль</title>
 </head>
 <body>
-<h1>User information</h1>
-<% User user = (User) request.getSession().getAttribute("user"); %>
-<%=user.getFirstName()%>
-<br>
-<%=user.getLastName()%>
-<br>
-<%=user.getEmail()%>
-<br>
-<%=user.getUser_id()%>
 </body>
 </html>
 

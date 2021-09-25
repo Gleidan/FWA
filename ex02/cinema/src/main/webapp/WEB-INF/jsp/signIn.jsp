@@ -18,7 +18,7 @@
 <% if (request.getAttribute("error") != null) {%> <%= request.getAttribute("error")%><%}%>
 <div class="form-style-6">
     <h1>Аутентификация</h1>
-    <form action="${pageContext.request.contextPath}/signIn" method="POST">
+    <form action="/FWA/signIn" method="POST">
         <label>Email: </label>
         <input type="email" placeholder="Enter your email" name="email" required>
         <label>Password: </label>

@@ -4,6 +4,9 @@
 <%@ page import="edu.school21.cinema.model.AuthenticationData" %>
 <%@ page import="java.io.File" %>
 <%request.setCharacterEncoding("UTF-8");%>
+<style>
+    <%@ include file="/css/style.css" %>
+</style>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,44 +14,62 @@
     <title>Профиль</title>
 </head>
 <body>
-<h1>User information</h1>
-<% User user = (User) request.getSession().getAttribute("user"); %>
-<%=user.getFirstName()%>
-<br>
-<%=user.getLastName()%>
-<br>
-<%=user.getEmail()%>
-<br>
+<h1>Profile</h1>
+<div class="userInfo">
+    <p class="title">
+        <% User user = (User) request.getSession().getAttribute("user"); %>
+        <%=user.getFirstName()%> <%=user.getLastName()%>
+    <br>
+        <%=user.getEmail()%>
+    <br>
+    </p>
+    <table>
+        <tr>
+            <th>IP</th>
+            <th>Date/time</th>
+        </tr>
 <%
     for (AuthenticationData data : user.getAuthList()) {
 %>
-        <%=data.getIp() + " "%>
-        <%=data.getDate()%>
-        <br>
+        <tr>
+            <td><%=data.getIp() + " "%></td>
+            <td><%=data.getDate()%></td>
+        </tr>
 <%
-}
+} %>
+    </table>
+</div>
+<br>
+<div class="userImage">
+    <%
     if (request.getAttribute("images") != null) {
         File path = new File((String) request.getAttribute("images"));
 %>
 <ul>
+    <table>
+        <tr>
+            <th>Image</th>
+        </tr>
 <%
     for (File image : path.listFiles()) {
         String imageName = image.getName();
 %>
-    <li>
-        <a href="/images/<%=imageName%>" target="_blank"><%=imageName%></a>
-    </li>
+        <tr>
+            <td><a href="/FWA/images/<%=imageName%>" target="_blank"><%=imageName%></a></td>
+        </tr>
 <%
-    }
-}
+    } %>
+    </table>
+<% }
 %>
 </ul>
-<form enctype="multipart/form-data" method="POST" action="/profile">
+<form enctype="multipart/form-data" method="POST" action="/FWA/profile">
     <p>
         <input type="file" name="image">
         <input type="submit" value="Отправить">
     </p>
 </form>
+</div>
 </body>
 </html>
 

@@ -21,7 +21,7 @@
 
 <div class="form-style-6">
     <h1>Регистрация</h1>
-    <form action="${pageContext.request.contextPath}/signUp" method="POST">
+    <form action="/FWA/signUp" method="POST">
         <label>FirstName:
             <input type="text" placeholder="Enter user first name" name="firstName" required>
         </label>

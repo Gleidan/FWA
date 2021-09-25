@@ -14,7 +14,7 @@
 <body>
 <% if (request.getAttribute("error") != null) {%> <%= request.getAttribute("error")%><%}%>
     <h1>Регистрация</h1>
-    <form action="/signUp" method="POST">
+    <form action="/FWA/signUp" method="POST">
         <label>FirstName: </label>
         <input type="text" placeholder="Enter user first name" name="firstName" required>
         <label>LastName: </label>

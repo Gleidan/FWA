@@ -14,9 +14,9 @@ public class AuthenticationFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpSession session = ((HttpServletRequest) servletRequest).getSession();
         String uri = ((HttpServletRequest) servletRequest).getRequestURI();
-        if (uri.startsWith("/signIn") || uri.startsWith("/signUp")) {
+        if (uri.startsWith("/FWA/signIn") || uri.startsWith("/FWA/signUp")) {
             if (session.getAttribute("user") != null) {
-                ((HttpServletResponse) servletResponse).sendRedirect("/profile");
+                ((HttpServletResponse) servletResponse).sendRedirect("/FWA/profile");
                 return;
             }
         } else {
