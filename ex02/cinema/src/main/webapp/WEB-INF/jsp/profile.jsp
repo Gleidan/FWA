@@ -14,7 +14,6 @@
     <title>Профиль</title>
 </head>
 <body>
-<h1>Profile</h1>
 <div class="userInfo">
     <p class="title">
         <% User user = (User) request.getSession().getAttribute("user"); %>
@@ -45,7 +44,6 @@
     if (request.getAttribute("images") != null) {
         File path = new File((String) request.getAttribute("images"));
 %>
-<ul>
     <table>
         <tr>
             <th>Image</th>
@@ -62,7 +60,6 @@
     </table>
 <% }
 %>
-</ul>
 <form enctype="multipart/form-data" method="POST" action="/FWA/profile">
     <p>
         <input type="file" name="image">

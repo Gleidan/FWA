@@ -1,6 +1,4 @@
-<%@ page import="edu.school21.cinema.model.User" %>
 <%@ page contentType="text/html; charset=utf-8" %>
-<%@ page import = "java.util.ResourceBundle" %>
 <%request.setCharacterEncoding("UTF-8");%>
 <!DOCTYPE html>
 <html lang="en">
